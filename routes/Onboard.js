@@ -30,7 +30,7 @@ router.post('/onboard', async (req, res) => {
         );
 
         // Generate 2 mock credit cards and save them
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
             const creditCard = new CreditCard({
                 userID: userId,
                 cardType: ['Visa', 'MasterCard', 'Amex'][Math.floor(Math.random() * 3)],
@@ -44,7 +44,7 @@ router.post('/onboard', async (req, res) => {
             await creditCard.save();
 
             // For each credit card, generate 10 transactions and save them
-            for (let j = 0; j < 3; j++) {
+            for (let j = 0; j < 1; j++) {
                 const transactionId = uuidv4();
                 const transaction = new Transaction({
                     userID: userId,

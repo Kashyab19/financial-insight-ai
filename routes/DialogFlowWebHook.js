@@ -1,8 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
 const router = express.Router();
 const { Configuration, OpenAIApi } = require('openai');
+
 const Transaction = require('../models/TransactionsSchema');
 const CreditCard = require("../models/CreditCardSchema")
+const ChatSession = require("../models/ChatSession")
+const ChatMessage = require("../models/ChatMessageSchema")
+
 const { detectIntentFromText } = require('../services/DialogFlowServices');
 const OpenAI = require('openai');
 const openai = new OpenAI(
@@ -13,7 +19,7 @@ const openai = new OpenAI(
 
 // Helper function to generate insights from OpenAI
 async function generateInsights(query, data) {
-    const prompt = `Assume that you are an expert in credit cards. Given the financial data: ${JSON.stringify(data)}, ${query}. Advise them with insights and advices`;
+    const prompt = `Keep your answers concise and to the point because you are an AI agent. Make your responses more human. Assume that you are an expert in credit cards. Given the financial data: ${JSON.stringify(data)}, ${query}. Advise them with insights and advices in less 30 words`;
 
     try {
         const completion = await openai.chat.completions.create({
@@ -35,6 +41,14 @@ router.post('/send-query', async (req, res) => {
         return res.status(400).json({ error: 'No text or userID provided' });
     }
 
+    // let session;
+    // try {
+    //     session = await ChatSession.create({ userID: userID });
+    // } catch (error) {
+    //     console.error('Failed to create session:', error);
+    //     return res.status(500).json({ error: 'Failed to initialize chat session' });
+    // }
+
     try {
         const dialogflowResponse = await detectIntentFromText(text);
         const currentIntentName = dialogflowResponse.queryResult.intent.displayName;
@@ -52,15 +66,29 @@ router.post('/send-query', async (req, res) => {
                 responsePayload = { intent: currentIntentName, data: transactionInsights };
                 break;
             default:
-                responsePayload = { intent: currentIntentName, message: "No relevant financial data to process." };
+                const welcomeInsights = await generateInsights(text, "");
+                responsePayload = { intent: currentIntentName, data: welcomeInsights };
                 break;
         }
 
+        // Save the assistant's response
+        await ChatMessage.create({
+            userID: userID,
+            query: text,
+            content: responsePayload.data || responsePayload.message,
+        });
+
+        console.log("Sending response payload:", JSON.stringify(responsePayload, null, 2));
         res.json(responsePayload);
     } catch (error) {
         console.error('Error during Dialogflow processing or OpenAI response generation:', error);
         res.status(500).json({ error: 'Failed to process query or generate insights' });
     }
+    // finally {
+    //     // Update the session end time when the interaction is complete
+    //     // session.endTime = new Date();
+    //     // await session.save();
+    // }
 });
 
 module.exports = router;

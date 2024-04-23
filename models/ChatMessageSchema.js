@@ -1,8 +1,13 @@
+const mongoose = require('mongoose');
+
 const ChatMessageSchema = new mongoose.Schema({
-    messageType: {
+    userID: {
         type: String,
-        required: true,
-        enum: ['user', 'assistant', 'insight']  // Added an enum to specify the type of message
+        required: true
+    },
+    query: {
+        type: String,
+        required: true
     },
     content: {
         type: String,
@@ -13,3 +18,5 @@ const ChatMessageSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+module.exports =  mongoose.model('ChatMessage', ChatMessageSchema);
