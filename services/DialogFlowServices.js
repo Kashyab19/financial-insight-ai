@@ -5,13 +5,16 @@ const fs = require('fs');
 const util = require('util');
 
 // Check if the GOOGLE_APPLICATION_CREDENTIALS environment variable is set
-// if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-//     console.error('The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.');
-//     process.exit(1);
-// }
+if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    console.error('The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.');
+    process.exit(1);
+}
 
+const credentialsJson = Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'base64').toString('ascii');
+const credentialsParsed = JSON.parse(credentialsJson);
 
 const clientOptions = {
+    credentials: credentialsParsed,
     apiEndpoint: 'us-central1-dialogflow.googleapis.com',
 };
 const client = new SessionsClient(clientOptions);
