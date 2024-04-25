@@ -5,10 +5,10 @@ const fs = require('fs');
 const util = require('util');
 
 // Check if the GOOGLE_APPLICATION_CREDENTIALS environment variable is set
-if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    console.error('The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.');
-    process.exit(1);
-}
+// if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+//     console.error('The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.');
+//     process.exit(1);
+// }
 
 
 const clientOptions = {

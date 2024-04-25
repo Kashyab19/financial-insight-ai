@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const router = express.Router();
 const { Configuration, OpenAIApi } = require('openai');

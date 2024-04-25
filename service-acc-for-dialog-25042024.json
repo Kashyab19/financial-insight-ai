@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cohesive-scope-411703",
+  "private_key_id": "37f3469c0edfcd451418927323a04e133d345c3e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCVPJ6NlHT5yZWD\ntKmTTP3HkoAtbxckKup4UgnQ8IhTvo254zR7bLtv8G1IaV50dajuKhXWjA8X/s07\nE8L3ia9DbpWCXLA2OBnUixjXOaTotMubZLMKd/V9cS+zGGvyKlcnuteFpSAeD0Ca\n+WA06TzxPrK9GrUAoK2wXIy6ePK929nikpsYSoeONsYe2SeIOzT5F55ul5Y6tLCK\nvsGfuTa+kanTHmwFCqhVep3Yb/mCgesVNxOClEYTnae/3LZ6FLdkiyi1rEkzCrxW\nk4uA/JxXQAfeGkqdgQkv67ddVrRsJ7X1OWvTaWmMvqwiNF2DDDGsJiYE9vfBMjC5\ncK58tMB3AgMBAAECggEAPwrlm798Ds0WaRXXkM80YatElGzaZL/wXrWhSe9iV6Ym\nrsEJOZ58K9RwBeflK+NMYpfKs+Bku+k6f1tgwDscm6rKY9CN68mVN9EuxDSoslk1\nrcZDUAfO35gB43FMoHc8bB8kzmMsBybATvdLqe5hfTPUQ8hVcBdwaBEgreFMAeGJ\npvzQOaVxBc46zJaz1lmZ6viSZMXHHmHFXtbuNU00VZ7Qs6sm96wUNVPrAwSaUY3v\n3saph3VI77wAU742FeFb8Su/TwalAkLTLRSzbFyxgB9fzrd7obxMB/NwujojWdKd\nPmZAiltJWKFL/mnPbtrbO7gyL4LhyL7B8GJXviHlaQKBgQDGsUH5JROF0EGa7UQw\nybVbWcIiqwiJt8BIM+eeyiOCpTTUsv4KA82QRsKD/0zr4m9eAt3W/mLNSJ8OCEr5\nMD25431T4w+4p124MSJBiSTpgltMblGqeQ155UBiiPMWyMZ5I/rfKm/WFpo6bPug\nRa9KewquICMAKJOd/nVYF9a89QKBgQDAR7v/CMECp7nRDoW2OA9SL+6i4AKGZKwU\nqvJ/RfVWkYZGKggAjbUoGNpBfXxBOw6gX2EjwIpGeKITV/0PcjeCyKfQtb5E6ozo\nLz7QlW1JZB6gqCZnfBW0vUCWmxZhZSYMMnYkbG2LQEOZtA7veyqZZtZD+a3ZSc/9\nztnJ4hnkOwKBgQC1ylSsWanlEsgTseZkJQlTjWo8QfRL3N2GskbHV/bpf7I4sZQR\nIa2gxb0O/DUq1UBD6aeDH7jSThGIyzmdiO/Q9j0i1Wr67danwfyvrYUiSOyzn3QE\n30DfOEuSW+7d99Dv4WWVbcRpQsDVmAUZfOiG4tDAxBKCAJ4fPkOq2BTXSQKBgQCi\nzlp1CDF9EQ154QUAlBkM6v7xNCGPL8Cww0oOz+p7AT8jO8WIynQAXoK2/wxtoxaw\nXfI/NnEeWFhLbq4cHQa5mzLUun4/liX3FsHmFQ/zG23/dEEIUH2EitYcb3aUwvNj\nUnrMPm7GgIR8qYQX7D7Wosd7yPYVzLTq3/FyShrILwKBgDUdGPPIOM73wdbZS7y/\nMs2B5zW0nDv6xrT8LeuKuG1JxRx1DoDtYcxYPfLmQOFgVfIN/ZNytW/NNM8CFAwE\n7jSdnBoCSqK231rrhVtnwM2bBQQfyFbrTWPmYjugJ3yZYg1PSC5Vl9abV7QfgfbR\nphhvDZcQzCQ/1PX7Q792pkCe\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account-for-dialogflow@cohesive-scope-411703.iam.gserviceaccount.com",
+  "client_id": "108018207426329903937",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account-for-dialogflow%40cohesive-scope-411703.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
