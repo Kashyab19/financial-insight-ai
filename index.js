@@ -12,8 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-const mongoURI = process.env.MONGO_URI || 'yourMongoDBConnectionString';
-
+const mongoURI = process.env.MONGO_URI || `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_HOST}`;
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))

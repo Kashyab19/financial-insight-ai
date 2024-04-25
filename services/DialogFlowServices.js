@@ -7,12 +7,12 @@ const util = require('util');
 // Check if the GOOGLE_APPLICATION_CREDENTIALS environment variable is set
 if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
     console.error('The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.');
-    process.exit(1); // Exit with error if not set
+    process.exit(1);
 }
 
-// Create Dialogflow CX client with specific client options including authentication
+
 const clientOptions = {
-    apiEndpoint: 'us-central1-dialogflow.googleapis.com', // Correct endpoint for 'us-central1'
+    apiEndpoint: 'us-central1-dialogflow.googleapis.com',
 };
 const client = new SessionsClient(clientOptions);
 
