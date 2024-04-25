@@ -1,6 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+// Import your route modules
+const onboardRouter = require('./routes/Onboard');
+const userDataRoutes = require('./routes/LoadUserData'); // Adjust path as needed
+const dialogflowWebhookRoute = require('./routes/DialogFlowWebhook'); // Update the path as needed
+const dialogflowService = require('./services/DialogFlowServices');
+const chatRoutes = require('./routes/LoadUserMessages');  // Adjust the path as necessary
 
 require('dotenv').config(); // Ensure you have installed dotenv package for environment variables
 const cors = require('cors');
@@ -20,12 +26,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
-// Import your route modules
-const onboardRouter = require('./routes/Onboard');
-const userDataRoutes = require('./routes/LoadUserData'); // Adjust path as needed
-const dialogflowWebhookRoute = require('./routes/DialogFlowWebhook'); // Update the path as needed
-const dialogflowService = require('./services/DialogFlowServices');
-const chatRoutes = require('./routes/LoadUserMessages');  // Adjust the path as necessary
+
 
 // Use routes
 app.use('/api/', onboardRouter);
