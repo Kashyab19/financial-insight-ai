@@ -1,8 +1,9 @@
 const express = require('express');
-const PersonalDetail = require('../models/PersonalDetailSchema'); // Adjust path as needed
-const CreditCard = require('../models/CreditCardSchema'); // Adjust path as needed
-const Transaction = require('../models/TransactionsSchema'); // Adjust path as needed
-// Import any other required models
+const PersonalDetail = require('../models/PersonalDetailSchema');
+const CreditCard = require('../models/CreditCardSchema');
+const Transaction = require('../models/TransactionsSchema');
+const ChatMessage = require('../models/ChatMessageSchema');
+
 
 const router = express.Router();
 
@@ -21,10 +22,14 @@ router.get('/userData', async (req, res) => {
             .sort({ date: -1 }) // Sort by date in descending order
             .limit(20);
 
+        const chatMessages = await ChatMessage.find({ userID: userDetails.userID })
+            .sort({ timestamp: -1 })
+
         res.json({
             personalDetails: userDetails,
             creditCards: creditCards,
-            transactions: transactions
+            transactions: transactions,
+            chatMessages: chatMessages
         });
     } catch (error) {
         console.error(error);

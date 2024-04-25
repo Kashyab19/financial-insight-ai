@@ -65,6 +65,9 @@ router.post('/send-query', async (req, res) => {
                 const transactionInsights = await generateInsights(text, transactions);
                 responsePayload = { intent: currentIntentName, data: transactionInsights };
                 break;
+            case 'Default Welcome Intent':
+                const welcomeInsights1 = await generateInsights(text, "")
+                responsePayload = {intent: currentIntentName, data: welcomeInsights1}
             default:
                 const welcomeInsights = await generateInsights(text, "");
                 responsePayload = { intent: currentIntentName, data: welcomeInsights };
