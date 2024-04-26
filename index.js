@@ -7,6 +7,8 @@ const userDataRoutes = require('./routes/LoadUserData'); // Adjust path as neede
 const dialogflowWebhookRoute = require('./routes/DialogFlowWebHook'); // Update the path as needed
 const dialogflowService = require('./services/DialogFlowServices');
 const chatRoutes = require('./routes/LoadUserMessages');  // Adjust the path as necessary
+const personalDetailsRoutes = require('./routes/UpdatePersonalDetails');
+const deleteTheUser = require('./routes/DeleteUser')
 
 require('dotenv').config(); // Ensure you have installed dotenv package for environment variables
 const cors = require('cors');
@@ -18,18 +20,24 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-const mongoURI = process.env.MONGO_URI || `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_HOST}`;
+const mongoURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_HOST}/?retryWrites=true&w=majority&appName=fintelligent-ios`
+    //process.env.MONGO_URI
+    //`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_HOST}`;
+
+//process.env.MONGO_URI||
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
 app.use(express.json()); // Middleware to parse JSON bodies
-// Use routes
+// Use the personal details routes
+app.use('/api/personalDetails', personalDetailsRoutes);
 app.use('/api/', onboardRouter);
 app.use('/api/', userDataRoutes);
 app.use('/api', dialogflowWebhookRoute);
 app.use('/api', chatRoutes);
+app.use('/api', deleteTheUser);
 
 
 // app.post('/send-query', async (req, res) => {
